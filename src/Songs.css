@@ -1,0 +1,54 @@
+.filteri input {
+    margin: 5px;
+    display: inline-block;
+    border: 1px solid rgba(140, 204, 204, 0.699);
+    
+}
+
+.filteri input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(14, 134, 233, 0.699);
+    opacity: 1; /* Firefox */
+  }
+
+.filteri input:focus {
+	outline: none;
+  	border: 1px solid rgb(13,202,240);
+}
+
+#songsTable {
+  font-family: 'Roboto', cursive;
+    border-collapse: collapse;
+    color: rgb(82, 82, 163);
+    width:100%;
+  }
+  
+  #songsTable td,
+  #songsTable th {
+    border: 0.8px solid rgba(181, 247, 244, 0.699);
+    padding: 2px;
+  }
+  
+  td {
+    text-align: center;
+    
+  }
+
+  
+
+  
+  #songsTable tr:nth-child(even) {
+    background-color: #5e3b3b21;
+  }
+  
+  #songsTable tr:hover {
+    background-color: rgba(181, 247, 244, 0.699);
+  }
+  
+  #songsTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgb(13,202,240);
+    color: white;
+  
+  }

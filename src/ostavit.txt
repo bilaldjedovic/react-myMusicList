@@ -1,0 +1,27 @@
+                    
+                   ZA EDIT KATEGORIJE I FAVORITEA 
+                    
+                     <div className="input-group mb-3">
+                    <span className="input-group-text">Favorite</span>
+                    <select id="krvnaGrupa"
+                    required
+                    ref={this.state.favoriteId}>
+                    {favorite.map((sed) => (
+                        <option selected={this.state.favoriteId === sed.favoriteName}
+                        value={sed.favoriteId}>{sed.favoriteName}</option>
+                    ))}
+                    </select>
+                    </div>
+
+
+                     <div className="input-group mb-3">
+                    <span className="input-group-text">Category</span>
+                    <select id="krvnaGrupa"
+                    required
+                    ref={this.state.categoryId}>
+                    {category.map((edi) => (
+                        <option selected={this.state.categoryId === edi.categoryName}
+                        value={edi.categoryId}>{edi.categoryName}</option>
+                    ))}
+                    </select>
+                    </div>

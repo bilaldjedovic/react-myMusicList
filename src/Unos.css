@@ -1,0 +1,94 @@
+
+
+.inputFormaDiv input[type=text], select {
+    width: 75%;
+    padding: 12px 20px;
+    margin: 6px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+  .inputFormaDiv input[type=number], select {
+    width: 75%;
+    padding: 12px 20px;
+    margin: 6px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+  
+  .inputFormaDiv label{
+    font-size: 15px;
+    color: rgb(13,202,240);
+  }
+  
+  .inputFormaDiv input:focus {
+      outline: none;
+    border: 1px solid rgb(13,202,240);
+  }
+  
+
+  
+  .inputFormaDiv input[type=date], select {
+    width: 75%;
+    padding: 12px 20px;
+    margin: 6px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+  .inputFormaDiv input[type=submit] {
+    width: 75%;
+    background-color: #ffffff;
+    color: rgb(13,202,240);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 1px solid rgb(13,202,240);
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .inputFormaDiv input[type=submit]:hover {
+    background-color: rgb(13,202,240);
+    color:rgb(255, 255, 255);
+   
+  }
+  
+  .inputFormaDiv select {
+    width: 75%;
+    padding: 12px 20px;
+    margin: 6px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+  
+  .inputFormaDiv select:focus {
+      outline: none;
+        border: 1px solid rgba(72, 209, 205, 0.295);
+  }
+  
+  
+  .inputFormaDiv {
+  
+  border-radius: 6px;
+  width: 100%;
+  padding: 20px;
+  display: block;
+  }
+  
+  
+  .inputFormaDiv select option:hover{
+    background-color: rgb(13,202,240) ;
+  }
+
+  .inputFormaDiv h3{
+   color: rgb(13,202,240) ;
+   font-size: 2.2rem;
+  }
+  
+  
