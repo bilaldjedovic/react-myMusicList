@@ -1,7 +1,6 @@
 /* eslint-disable react/no-direct-mutation-state */
 import React, { Component } from "react";
 
-
 import "./Songs.css";
 
 export class Categories extends Component {
@@ -10,44 +9,34 @@ export class Categories extends Component {
 
     this.state = {
       category: [],
-    categoryId : 0,
-    categoryName : "",
-      
-  
-      
-      
+      categoryId: 0,
+      categoryName: "",
+
       categoryFilter: "",
 
       categoryWithoutFilter: [],
     };
   }
 
- FilterFn() {
+  FilterFn() {
     var categoryFilter = this.state.categoryFilter;
-   
 
     var filteredData = this.state.categoryWithoutFilter.filter(function (e) {
-      return (
-        e.categoryName
-          .toString()
-          .toLowerCase()
-          .includes(categoryFilter.toString().trim().toLowerCase()) 
-        
-      );
+      return e.categoryName
+        .toString()
+        .toLowerCase()
+        .includes(categoryFilter.toString().trim().toLowerCase());
     });
 
     this.setState({ category: filteredData });
   }
-  
 
   changecategoryFilter = (e) => {
     this.state.categoryFilter = e.target.value;
     this.FilterFn();
   };
-  
-  refreshList() {
-   
 
+  refreshList() {
     fetch("https://localhost:44321/api/Category/getCategory")
       .then((response) => response.json())
       .then((data) => {
@@ -58,13 +47,9 @@ export class Categories extends Component {
   componentDidMount() {
     this.refreshList();
   }
- 
-  changeCategoryName = (e) => {
-    this.setState({ categoryId: e.target.value });
-  };
-  
+
   deleteClick(id) {
-    if (window.confirm("Da li ste sigurni?")) {
+    if (window.confirm("Are you sure?")) {
       fetch("https://localhost:44321/api/Category/obrisiPodatak/" + id, {
         method: "DELETE",
         mode: "cors",
@@ -85,16 +70,10 @@ export class Categories extends Component {
         );
     }
   }
-
- 
   render() {
-    const { 
-    category,
-     } = this.state;
+    const { category } = this.state;
 
-     
     return (
-        
       <div>
         <div className="filteri">
           <input
@@ -103,39 +82,38 @@ export class Categories extends Component {
             placeholder="Search category by name"
           />
         </div>
-        
+
         <table id="songsTable">
           <thead>
             <tr>
-              <th >Song name</th>
+              <th>Category ID</th>
               <th>Category</th>
+              <th>Actions</th>
             </tr>
-            </thead>
+          </thead>
 
-            <tbody>
-  
+          <tbody>
             {category.map((cat) => (
               <tr key={cat.categoryId}>
+                <td>{cat.categoryId}</td>
                 <td>{cat.categoryName}</td>
                 <td>
-               
-               
-                <button
-                  type="button"
-                  title="Delete category"
-                  className="btn btn-light mr-1"
-                  onClick={() => this.deleteClick(cat.categoryId)}
-                >
-                  <img
-                    src="https://www.pngall.com/wp-content/uploads/5/Delete-Bin-Trash-PNG-Free-Download.png"
-                    alt="myimage"
-                    width={17}
-                  />
-                </button>
+                  <button
+                    type="button"
+                    title="Delete category"
+                    className="btn btn-light mr-1"
+                    onClick={() => this.deleteClick(cat.categoryId)}
+                  >
+                    <img
+                      src="https://www.pngall.com/wp-content/uploads/5/Delete-Bin-Trash-PNG-Free-Download.png"
+                      alt="myimage"
+                      width={17}
+                    />
+                  </button>
                 </td>
               </tr>
             ))}
-        </tbody>
+          </tbody>
         </table>
       </div>
     );

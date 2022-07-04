@@ -143,7 +143,6 @@ export class Songs extends Component {
         author: this.state.author,
         link: this.state.link,
         rate: this.state.rate,
-        createdAt: this.state.createdAt,
         modifiedAt: this.state.modifiedAt,
       }),
     })
@@ -167,7 +166,6 @@ export class Songs extends Component {
       songName: songs.songName,
       link: songs.link,
       author: songs.author,
-      createdAt: songs.createdAt,
       modifiedAt: songs.modifiedAt,
       rate: songs.rate,
     });
@@ -306,28 +304,17 @@ export class Songs extends Component {
                     <div className="input-group mb-3">
                       <span className="input-group-text">Rate</span>
                       <input
-                        type="text"
+                        type="number"
                         className="form-control"
                         ref={rate}
                         defaultValue={this.state.rate}
                         onChange={this.changeRate}
                       />
                     </div>
-
                     <div className="input-group mb-3">
-                      <span className="input-group-text">created</span>
+                      <span className="input-group-text">Modified</span>
                       <input
-                        type="text"
-                        className="form-control"
-                        value={createdAt}
-                        defaultValue={this.state.createdAt}
-                        onChange={this.changeCreated}
-                      />
-                    </div>
-                    <div className="input-group mb-3">
-                      <span className="input-group-text">modified</span>
-                      <input
-                        type="text"
+                        type="date"
                         className="form-control"
                         value={modifiedAt}
                         defaultValue={this.state.modifiedAt}
