@@ -21,10 +21,7 @@ export class Songs extends Component {
       rate: "",
       createdAt: "",
       modifiedAt: "",
-      
 
-
-      
       favoriteFilter: "",
       songNameFilter: "",
 
@@ -32,10 +29,9 @@ export class Songs extends Component {
     };
   }
 
- FilterFn() {
+  FilterFn() {
     var favoriteFilter = this.state.favoriteFilter;
     var songNameFilter = this.state.songNameFilter;
-   
 
     var filteredData = this.state.songsWithoutFilter.filter(function (e) {
       return (
@@ -46,7 +42,7 @@ export class Songs extends Component {
         e.songName
           .toString()
           .toLowerCase()
-          .includes(songNameFilter.toString().trim().toLowerCase()) 
+          .includes(songNameFilter.toString().trim().toLowerCase())
       );
     });
 
@@ -61,12 +57,12 @@ export class Songs extends Component {
     this.state.songNameFilter = e.target.value;
     this.FilterFn();
   };
-  
+
   refreshList() {
     fetch("https://localhost:44321/api/Song/getSongs")
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ songs: data , songsWithoutFilter:data});
+        this.setState({ songs: data, songsWithoutFilter: data });
       });
 
     fetch("https://localhost:44321/api/Favorite/getFavorite")
@@ -98,14 +94,14 @@ export class Songs extends Component {
     this.setState({ rate: e.target.value });
   };
   changeCreated = (e) => {
-    this.setState({ createdAt: parseInt(e.target.value) });
+    this.setState({ createdAt: e.target.value });
   };
 
   changeModified = (e) => {
-    this.setState({ modifiedAt: parseInt(e.target.value) });
+    this.setState({ modifiedAt: e.target.value });
   };
   changeLink = (e) => {
-    this.setState({ link: parseInt(e.target.value) });
+    this.setState({ link: e.target.value });
   };
   changeFavorite = (e) => {
     this.setState({ favoriteId: e.target.value });
@@ -134,26 +130,23 @@ export class Songs extends Component {
   }
 
   updateClick() {
-    fetch(
-      "https://localhost:44321/api/Song/editSong/" + this.state.songId,
-      {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          Accept: "application/json",
+    fetch("https://localhost:44321/api/Song/editSong/" + this.state.songId, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        Accept: "application/json",
 
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          songName: this.state.songName,
-          author: this.state.author,
-          link: this.state.link,
-          rate: this.state.rate,
-          createdAt: this.state.createdAt,
-          modifiedAt: this.state.modifiedAt,
-        }),
-      }
-    )
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        songName: this.state.songName,
+        author: this.state.author,
+        link: this.state.link,
+        rate: this.state.rate,
+        createdAt: this.state.createdAt,
+        modifiedAt: this.state.modifiedAt,
+      }),
+    })
       .then((res) => res.json())
       .then(
         (result) => {
@@ -180,17 +173,17 @@ export class Songs extends Component {
     });
   }
   render() {
-    const { 
-    songs,
-    modalTitle,
-    songId,
-    songName,
-    author,
-    link,
-    rate,
-    createdAt,
-    modifiedAt,
-     } = this.state;
+    const {
+      songs,
+      modalTitle,
+      songId,
+      songName,
+      author,
+      link,
+      rate,
+      createdAt,
+      modifiedAt,
+    } = this.state;
 
     return (
       <div>
@@ -206,11 +199,11 @@ export class Songs extends Component {
             placeholder="Search favorite (YES/NO) "
           />
         </div>
-        
+
         <table id="songsTable">
           <thead>
             <tr>
-              <th >Song name</th>
+              <th>Song name</th>
               <th>Category</th>
               <th>Author</th>
               <th>Link</th>
@@ -220,10 +213,9 @@ export class Songs extends Component {
               <th>Is favorite?</th>
               <th>Actions</th>
             </tr>
-            </thead>
+          </thead>
 
-            <tbody>
-  
+          <tbody>
             {songs.map((song) => (
               <tr key={song.songId}>
                 <td>{song.songName}</td>
@@ -231,40 +223,44 @@ export class Songs extends Component {
                 <td>{song.author}</td>
                 <td>{song.link}</td>
                 <td>{song.rate}</td>
-                <td style={{whiteSpace: "nowrap"}}>{song.createdAt.substring(0,10)}</td>
-                <td style={{whiteSpace: "nowrap"}}>{song.modifiedAt.substring(0,10)}</td>
+                <td style={{ whiteSpace: "nowrap" }}>
+                  {song.createdAt.substring(0, 10)}
+                </td>
+                <td style={{ whiteSpace: "nowrap" }}>
+                  {song.modifiedAt.substring(0, 10)}
+                </td>
                 <td>{song.favoriteName}</td>
                 <td>
-                <button
-                  type="button"
-                  className="btn btn-light mr-1"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                  title="Edit song"
-                  onClick={() => this.editClick(song)}
-                >
-                  <img
-                    src="https://toppng.com/uploads/preview/75476-2019-02-08-edit-icon-png-small-11563142463qiwrzqx0e1.png"
-                    alt="myimage"
-                    width={17}
-                  />
-                </button>
-                <button
-                  type="button"
-                  title="Delete song"
-                  className="btn btn-light mr-1"
-                  onClick={() => this.deleteClick(song.songId)}
-                >
-                  <img
-                    src="https://www.pngall.com/wp-content/uploads/5/Delete-Bin-Trash-PNG-Free-Download.png"
-                    alt="myimage"
-                    width={17}
-                  />
-                </button>
+                  <button
+                    type="button"
+                    className="btn btn-light mr-1"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                    title="Edit song"
+                    onClick={() => this.editClick(song)}
+                  >
+                    <img
+                      src="https://toppng.com/uploads/preview/75476-2019-02-08-edit-icon-png-small-11563142463qiwrzqx0e1.png"
+                      alt="myimage"
+                      width={17}
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    title="Delete song"
+                    className="btn btn-light mr-1"
+                    onClick={() => this.deleteClick(song.songId)}
+                  >
+                    <img
+                      src="https://www.pngall.com/wp-content/uploads/5/Delete-Bin-Trash-PNG-Free-Download.png"
+                      alt="myimage"
+                      width={17}
+                    />
+                  </button>
                 </td>
               </tr>
             ))}
-        </tbody>
+          </tbody>
         </table>
         <div
           className="modal fade"
@@ -314,7 +310,7 @@ export class Songs extends Component {
                         className="form-control"
                         ref={rate}
                         defaultValue={this.state.rate}
-                        onChange={this.changeAdresa}
+                        onChange={this.changeRate}
                       />
                     </div>
 
