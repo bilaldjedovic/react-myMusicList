@@ -84,17 +84,12 @@ export class Songs extends Component {
   changeSongName = (e) => {
     this.setState({ songName: e.target.value });
   };
-  changeCategoryName = (e) => {
-    this.setState({ categoryId: e.target.value });
-  };
+
   changeAuthor = (e) => {
     this.setState({ author: e.target.value });
   };
   changeRate = (e) => {
-    this.setState({ rate: e.target.value });
-  };
-  changeCreated = (e) => {
-    this.setState({ createdAt: e.target.value });
+    this.setState({ rate: parseInt(e.target.value) });
   };
 
   changeModified = (e) => {
@@ -179,7 +174,6 @@ export class Songs extends Component {
       author,
       link,
       rate,
-      createdAt,
       modifiedAt,
     } = this.state;
 

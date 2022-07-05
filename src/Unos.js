@@ -64,7 +64,8 @@ const Unos = () => {
         },
         body: JSON.stringify(newSong),
       }).then(() => {
-        console.log("Nova osoba dodana");
+        console.log("New song added");
+        alert("New song added!");
       });
     } catch (error) {
       console.log(error);
@@ -123,7 +124,7 @@ const Unos = () => {
         <input
           required
           type="date"
-          placeholder="Izaberite datum"
+          placeholder="Choose date"
           onChange={(e) => {
             newSong.createdAt = e.target.value;
           }}
@@ -133,7 +134,7 @@ const Unos = () => {
         <input
           required
           type="text"
-          placeholder="U formatu bez / i -"
+          placeholder="Paste link here"
           onChange={(e) => {
             newSong.link = e.target.value;
           }}
